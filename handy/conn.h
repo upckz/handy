@@ -109,6 +109,9 @@ struct TcpConn : public std::enable_shared_from_this<TcpConn>, private noncopyab
     virtual int readImp(int fd, void *buf, size_t bytes) { return ::read(fd, buf, bytes); }
     virtual int writeImp(int fd, const void *buf, size_t bytes) { return ::write(fd, buf, bytes); }
     virtual int handleHandshake(const TcpConnPtr &con);
+    virtual void OnConnect(){};
+    virtual void OnClose(){};
+    virtual int DoRecv(const char* data, int len){return 0;};
 };
 
 // Tcp服务器

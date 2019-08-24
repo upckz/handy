@@ -11,7 +11,7 @@ int main(int argc, const char *argv[]) {
     Signal::signal(SIGINT, [&] { base.exit(); });
 
     int userid = 1;
-    TcpServerPtr chat = TcpServer::startServer(&base, "", 2099);
+    TcpServerPtr chat = TcpServer::startServer(&base, "192.168.56.102", 2099);
     exitif(chat == NULL, "start tcpserver failed");
     chat->onConnCreate([&] {
         TcpConnPtr con(new TcpConn);
@@ -35,7 +35,7 @@ int main(int argc, const char *argv[]) {
             intptr_t id = strtol(p, &p, 10);
             p += *p == ' ';  //忽略一个空格
             string resp = util::format("%ld# %.*s", cid, msg.end() - p, p);
-
+          
             int sended = 0;
             if (id == 0) {  //发给其他所有用户
                 for (auto &pc : users) {

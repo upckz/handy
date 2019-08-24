@@ -14,6 +14,7 @@ int main(int argc, const char *argv[]) {
         signal(SIGINT, SIG_DFL);
     });
 
+  
     hsha->onMsg(new LineCodec, [](const TcpConnPtr &con, const string &input) {
         int ms = rand() % 1000;
         info("processing a msg");

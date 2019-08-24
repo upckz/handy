@@ -16,6 +16,7 @@ int main(int argc, const char *argv[]) {
         return 1;
     }
     int begin_port = atoi(argv[1]);
+    
     int end_port = atoi(argv[2]);
     int processes = atoi(argv[3]);
     int man_port = atoi(argv[4]);
